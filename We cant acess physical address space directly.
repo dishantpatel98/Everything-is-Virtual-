@@ -1,0 +1,25 @@
+This is exactly what memory protection is trying to achieve: not to allow anyone, specifically user processes, to access random memory locations!.
+
+To you, it might sound like a funny idea. Let’s goof around playing with pointers and see what happens. What’s the worst that could happen, right?.
+
+Wrong. You might not think it’s a big deal, but believe me, it is a big deal.
+
+Say you successfully accessed that memory location you wanted to. Say it just so happened that a critical part of the kernel scheduler is residing there, or it’s part of the kernel stack. Say you wrote some funny value to it, like 0xDEADBEEF or something. Sounds funny, right?.
+
+Again: Wrong. You know why? Because your system just crashed, taking down all your open files and unsaved documents with it. Perhaps taking also the sanity of your hard disk and the file-systems therein.
+
+Now you understand why accessing random places in memory is the Sum of All Fears. Now let’s see what’s really happening when you run this little program of yours, shall we?.
+
+You define a pointer, p, that will point to an integer. You initialize it to the value 220, as you did:
+
+    int *p = 220;
+
+Up to here, there is no problem. The compiler allocated a space (of probably 4 bytes) on the stack for p, as it is an automatic variable. It then saved the value 220 in that place. So far so benign.
+
+The trick happens when you try to access that memory location. As a matter of fact, it’s not you who crashed the program, its the call to printf()!
+
+    printf("%d", *p);
+
+When calling printf(), your program tried to dereference the pointer. It didn’t know if it was a legal or illegal address. The memory management unit (MMU), which is part of the hardware, tried to translate this virtual address of 220 to it’s corresponding physical address in memory. It searched it’s memory tables and didn’t find an entry, so the memory manager trapped into the kernel, essentially yelling: Hey! Someone tried to access a virtual page that has no associated physical frame! See to that, now!.
+
+The kernel grabs the virtual address and looks into the process’s page table. It finds no such mapping, so it says: You are accessing an illegal memory address! Be gone!. The kernel sends your process a SIGSEGV signal which, by default, kills the process and dumps it’s core.
