@@ -1,0 +1,5 @@
+Linux kernel uses Copy-on-Write(which is one type of resource management technique) when fork() system call is called.
+When the syscall is executed ,the pages that the parent and child share marked read-only memory.
+
+If a write operation is performed by either of them,  on the read only pages,then page fault is generated,resulting in the copying the pages  i.e seperate physical memory is allocated to both the processes and corresponding page table entries are updated accordingly  ,as the memory is no longer identical between the two processes..
+Therefore,if only read operation are being performed ,the pages will not be copied at all.
