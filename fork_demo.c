@@ -60,8 +60,9 @@ while(1){
 				 
 	if(ret>0){
 	
-	if(WIFEXITED(status)){
-	
+	if(WIFEXITED(status)){  //waitpid() will collect and copy the status code in param2 and also returns the pid value of the 
+	                        //cleaned up process
+		                //WIFEXITED(status) will provide 0,if the child completed sucessfully and invoked exit(0)
         	if(WEXITSTATUS(status)){
     		printf("normal and sucessfull and pid=%d \n",ret);
 	}
@@ -78,7 +79,9 @@ while(1){
 	printf("abnormal and unsucessfully\n ");
 	}
         }
-if(ret<0){
+//waitpid() returns -1, when all the processes are cleaned-up and there are no childeren processes	
+	
+if(ret<0){  //this block of code will terminate the parent process sucessfully
 printf("Parent has cleared all the child processes");
 	exit(0);
 }
