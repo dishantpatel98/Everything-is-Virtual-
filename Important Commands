@@ -1,3 +1,5 @@
 sysctl -a --pattern "randomize"                    ---->TO check the value
 sysctl -w kernel.randomize_va_space=0              ----->TO change the value
 cat  /proc/<pid>/maps
+
+ps -e -o ppid,pid,cmd,class,ni,rtprio,vsz,rsz  
