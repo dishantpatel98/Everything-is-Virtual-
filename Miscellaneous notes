@@ -1,0 +1,15 @@
+SIGTERM is the termination signal. The default behavior is to terminate the process, but it also can be caught or ignored. The intention is to kill the process, gracefully or not, but to first allow it a chance to cleanup.
+
+SIGKILL is the kill signal. The only behavior is to kill the process, immediately. As the process cannot catch the signal, it cannot cleanup, and thus this is a signal of last resort.
+
+
+Process termination
+
+A process can terminate in one of two basic ways:
+
+    normally (e.g. the process terminates itself,meaning, the child process terminated 
+                    normally and successfully completed its job,by invokin exit(0) )
+    abnormally (e.g. the process terminates as the result of a signal's being set,when the child process terminated 
+                 normally, but unsuccessful completion of job,by invoking exit(1))
+
+ 
