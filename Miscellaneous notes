@@ -7,9 +7,10 @@ Process termination
 
 A process can terminate in one of two basic ways:
 
-    normally (e.g. the process terminates itself,meaning, the child process terminated 
-                    normally and successfully completed its job,by invokin exit(0) )
-    abnormally (e.g. the process terminates as the result of a signal's being set,when the child process terminated 
+1)normally (e.g. the process terminates itself,meaning, the child process terminated 
+                 normally and successfully completed its job,by invokin exit(0))
+                   
+2)abnormally (e.g. the process terminates as the result of a signal's being set,when the child process terminated 
                  normally, but unsuccessful completion of job,by invoking exit(1))
 
  
