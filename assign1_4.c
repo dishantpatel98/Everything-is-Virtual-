@@ -262,7 +262,7 @@ ret = execl("/usr/bin/gcc","gcc","-c","a3.c","-o", "a3.o",NULL);
  {
    while(1)
    {
-
+/home/desd/dishant
      ret = waitpid(-1,&status,0);
      if(ret>0)
      {
@@ -337,7 +337,7 @@ ret = execl("/usr/bin/gcc","gcc","-c","a3.c","-o", "a3.o",NULL);
       //ret=execl("/home/dac/Downloads/ex2","ex2","1000", NULL);  //correct !!!
       //ret=execl("/home/dac/Downloads/w1","w1","1000", NULL);  //correct !!!
       if(ret<0) { perror(" my error in execl"); exit(33); }	   
-   }
+   }final
 
 
 //the below code must be before creating children for linking and loading 
