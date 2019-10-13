@@ -100,12 +100,19 @@ if(ret==0) {
 
 
          // shmctl(id,IPC_RMID,0);
-          printf("shared memory is destroyed\n");
+        //  printf("shared memory is destroyed\n");
            //destroy the shared memory object !!!
  printf("final value of shared counter is %d\n",ptr_shma->value);
-shmctl(id,IPC_RMID,0);          
- exit(0);
+int x=shmctl( shm_id1,IPC_RMID,0);          
 
+if(x==-1){
+printf("shared memory is not  destroyed");
+exit(0);
+}
+
+else{
+printf("Shared memory is destroyed");
+}
     }
 
 
@@ -167,4 +174,3 @@ if(ret>0)
 
 
 }
-
