@@ -11,9 +11,17 @@
 
 int main(){
 struct node{
- int value;
-	
-	};
+ int value1;
+int value2;
+int value3;
+int value4;
+int value5;
+int value6;
+int value7;
+int value8;
+int value9;
+int value10;
+         };
 
 
 int status,id;
@@ -31,21 +39,32 @@ exit(1);
 
 ptr_shma=shmat(shm_id1,0,0);
 
-ptr_shma->value=600000;
+ptr_shma->value1=6000000;
+ptr_shma->value2=6000000;
+ptr_shma->value3=6000000;
+ptr_shma->value4=6000000;
+ptr_shma->value5=6000000;
+ptr_shma->value6=6000000;
+ptr_shma->value7=6000000;
+ptr_shma->value8=6000000;
+ptr_shma->value9=6000000;
+ptr_shma->value10=6000000;
+
+
 
 
 int ret=fork();
 int flag_unsuccessful=0,flag_abnormal=0;
-if(ret==0){
-int count;
+if(ret>0){
+
 
 
 printf("the attached address is 0x%x\n", ptr_shma);
-printf("the amount of shm memory used is %d\n",sizeof(count));
+//printf("the amount of shm memory used is %d\n",sizeof(count));
 
 
 int i;
-for( i=0;i<600000;i++){
+for( i=0;i<3000000;i++){
 
 
 //printf("I am in child line---1");
@@ -55,17 +74,29 @@ for( i=0;i<600000;i++){
 //printf("I am in child line---5");
 
 
+ptr_shma->value1--;
+ptr_shma->value2--;
+ptr_shma->value3--;
+ptr_shma->value4--;
+ptr_shma->value5--;
+ptr_shma->value6--;
+ptr_shma->value7--;
+ptr_shma->value8--;
+ptr_shma->value9--;
+ptr_shma->value10--;
 
-ptr_shma->value--;
+
+
+
 //printf("the value of count in process 1 %d\n",ptr_shma->value);
 
  
 }
-ptr_shma->value=600000;
+//ptr_shma->value=600000;
 
 }
 
-if(ret>0){
+if(ret==0){
 
 int count;
 	
@@ -75,57 +106,38 @@ int count;
 //printf("I am in parent line---4");
 //printf("I am in parent line---5");
 //printf("I am in parent line---6");
-//printf("the attached address is 0x%x\n", ptr_shma);
+printf("the attached address is 0x%x\n", ptr_shma);
 //printf("the amount of shm memory used is %d\n",sizeof(count));
 
-//ptr_shma->value =8;
+
 int i;
-for(i=0;i<=600000;i++){
+for(i=0;i<3000000;i++){
 
 
 
-ptr_shma->value--;
+ptr_shma->value1--;
+ptr_shma->value2--;
+ptr_shma->value3--;
+ptr_shma->value4--;
+ptr_shma->value5--;
+ptr_shma->value6--;
+ptr_shma->value7--;
+ptr_shma->value8--;
+ptr_shma->value9--;
+ptr_shma->value10--;
+
+
+
 }
 
 
-ptr_shma->value=600000;
+//ptr_shma->value=600000;
 
 
 
 
 
 }
-
-if(ret==0) {
-
-
-         // shmctl(id,IPC_RMID,0);
-        //  printf("shared memory is destroyed\n");
-           //destroy the shared memory object !!!
- printf("final value of shared counter is %d\n",ptr_shma->value);
-int x=shmctl( shm_id1,IPC_RMID,0);          
-
-if(x==-1){
-printf("shared memory is not  destroyed");
-exit(0);
-}
-
-else{
-printf("Shared memory is destroyed");
-}
-    }
-
-
-
-
-
-
-
-
-
-
-
-
 
 if(ret>0)
  {
@@ -159,8 +171,33 @@ if(ret>0)
 
      if(ret<0)
      {   
-        break;  //you must check conditions properly   
-     }
+ printf("final value of shared counter is %d\n",ptr_shma->value1);
+ printf("final value of shared counter is %d\n",ptr_shma->value2);
+ printf("final value of shared counter is %d\n",ptr_shma->value3);
+ printf("final value of shared counter is %d\n",ptr_shma->value4);
+ printf("final value of shared counter is %d\n",ptr_shma->value5);
+ printf("final value of shared counter is %d\n",ptr_shma->value6);
+ printf("final value of shared counter is %d\n",ptr_shma->value7);
+ printf("final value of shared counter is %d\n",ptr_shma->value8);
+
+ printf("final value of shared counter is %d\n",ptr_shma->value9);
+ printf("final value of shared counter is %d\n",ptr_shma->value10);
+
+	     
+	     shmctl( shm_id1,IPC_RMID,0);
+int x;
+ if(x==-1){
+printf("shared memory is not  destroyed");
+exit(0);
+}
+
+else{
+printf("Shared memory is destroyed");
+exit(1);
+}
+ exit(1);
+
+    }
 
    }//second while
 
