@@ -16,3 +16,6 @@ A process can terminate in one of two basic ways:
  
 -->When you invoke GCC, it normally does preprocessing, compilation, assembly and linking.  The "overall options" allow you to stop this process at an intermediate
        stage.  For example, the -c option says not to run the linker.  Then the output consists of object files output by the assembler.
+
+
+--->Linux makes EXTENSIVE use of kernel threads. For example, every single process in a Linux system is a "kernel thread". And every user-created pthread is ALSO implemented as a new "kernel thread". As are "worker threads" (which are completely invisible to any user-level process).
