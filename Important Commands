@@ -6,3 +6,5 @@ ps -e -o ppid,pid,cmd,class,ni,rtprio,vsz,rsz
 
 
 ps -em -o pid,ppid,cmd,vsz,rsz,nlwp,lwp,stat,class,ni,rtprio,psr ....| less-->To test the processes and their thread states
+
+sh nameofScript.sh     //To execute the script
