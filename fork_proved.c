@@ -15,10 +15,12 @@ void  main(void)
     pid = fork();
     if (pid == 0) {
             *x = 100;
+            printf("%p\n",&x);
             ChildProcess();
     }
     else {
             *x = 200;
+            printf("%p\n",&x);
             ParentProcess();
     }
     printf("the address is %p and value is %d\n", x, *x);
