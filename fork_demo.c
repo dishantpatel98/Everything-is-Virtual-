@@ -83,14 +83,7 @@ if(ret<0){  //this block of code will terminate the parent process sucessfully
 printf("Parent has cleared all the child processes");
 	exit(0);
 }
-
-
-
-
 }
-
-
-
 }
 return 0;
 }
