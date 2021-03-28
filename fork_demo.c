@@ -71,12 +71,12 @@ while(1){
 		printf("terminated with exit(0)i.e normal termination and pid =%d \n",ret);
 	        }
 	
-	}
+	}//WIFEXITED(status)
 	
 	else{
 	printf("abnormal and unsucessfully\n ");
 	}
-}
+} //ret>0
         //waitpid() returns -1, when all the processes are cleaned-up and there are no childeren processes	
 	
 if(ret<0){  //this block of code will terminate the parent process sucessfully
