@@ -76,7 +76,7 @@ while(1){
 	else{
 	printf("abnormal and unsucessfully\n ");
 	}
-        }
+}
         //waitpid() returns -1, when all the processes are cleaned-up and there are no childeren processes	
 	
 if(ret<0){  //this block of code will terminate the parent process sucessfully
