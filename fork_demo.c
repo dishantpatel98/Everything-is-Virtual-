@@ -62,7 +62,6 @@ while(1){
 	
 	if(WIFEXITED(status)){  //waitpid() will collect and copy the status code in param2 and also returns the pid value of the 
 	                        //cleaned up process
-		                //WIFEXITED(status) will provide 0,if the child completed sucessfully and invoked exit(0)
         	if(WEXITSTATUS(status)){
     		printf("terminated with exit(1)i.e abnormal termination and pid=%d \n",ret);
 	        }
